@@ -23,31 +23,88 @@
         var crying = false;
 
 
-        /*
-        //Player Two
-        var score = 394;
-        var last_play = "W";
-        var broom = "none";
-        var has_ball = true;
-        var is_in_tree = true;
-        var crying = false;
-        */
+       
+        // // //Player Two
+        // // var score = 394;
+        // // var last_play = "W";
+        // // var broom = "none";
+        // // var has_ball = true;
+        // // var is_in_tree = true;
+        // // var crying = false;
+       
 
-        /*
-        //Player Three
-        var score = "f";
-        var last_play = 1.5;
-        var broom = "brush";
-        var has_ball = true;
-        var is_in_tree = false;
-        var crying = true;
-        */
-
-        if (score ===NaN) {
-            score==500
+        
+        // //Player Three
+        // var score = "f";
+        // var last_play = 1.5;
+        // var broom = "brush";
+        // var has_ball = true;
+        // var is_in_tree = false;
+        // var crying = true;
+        
+        //A player's score is equal to 500 if their score is not already a number. 
+        if (typeof(score)==="string") {
+            console.log("string");
+            score=500;
+        } else {
+            console.log("number");
         }
 
+        //A player's score is reduced by 300 if they are crying. Otherwise it is increased by 50.
+        if (crying ===true) {
+            console.log("was crying");
+           score = score-300;
+        } else { 
+            console.log("not crying");
+            score=score + 50;
+        }
+
+        // A player's score is reduced by 77 if their last play was "Q"
+        if (last_play==="Q") {
+            console.log("Q");
+            score=score-77;
+        }
+
+        //A player gets an extra 395 points if they are in a tree, unless their last play was a number.
+        if(is_in_tree===true && (typeof(last_play) === "string")) {
+            colsole.log("tree true and last play is not a number")
+            score=score+395;
+        } else{
+            console.log("no points");
+        }
+
+        //A player's score is doubled if they are holding the broom handle, 
+        //but it is tripled if they have the broom brush. Otherwise the player's score is halved.
+        if (broom==="handle") {
+            console.log("handle")
+            score=score*2;
+        } else if (broom==="brush") {
+            console.log("brush");
+            score=score*3;
+        } else {
+            console.log("neither");
+            score=score/2;
+        }
+
+        //A player's score is multiplied by 1.5 if they are carrying the ball 
+        // but only if they are not in a tree. Disregard this rule if the player is crying.
+        if (crying===true) {
+            console.log("crying")
+        } else if (has_ball===true && is_in_tree===false) {
+            console.log("has ball");
+            score=score*1.5;
+        } else{
+            console.log("no points");
+        }
+
+        //If the player's last play was a number (not a letter), the player's score is multiplied by that amount.
+        if (typeof(last_play)!=="string") {
+            console.log("last play is not a string")
+            score=score*(last_play)
+            }
+
+        console.log(score)
 
 
-        console.log(score);
 
+        
